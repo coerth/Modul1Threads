@@ -40,7 +40,10 @@ class MyTask4 implements Runnable {
 
     @Override
     public void run() {
+        synchronized (MyTask4.class)
+        {
         list.add( count );
         System.out.println( "Task: " + count + ": List size = " + list.size() );
+        }
     }
 }

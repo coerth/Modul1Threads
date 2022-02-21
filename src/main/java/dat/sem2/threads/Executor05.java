@@ -38,11 +38,14 @@ class MyTask3 implements Runnable {
     @Override
     public void run() {
         try {
-            int myH = hundred;
-            Thread.sleep( sleepTime ); // simulate some external job taking time
-            myH += 100;
-            hundred = myH;
-            System.out.println( "Task: " + count + ": Hundred = " + hundred);
+            synchronized (MyTask3.class) {
+                int myH = hundred;
+                Thread.sleep(sleepTime); // simulate some external job taking time
+                myH += 100;
+                hundred = myH;
+            }
+                System.out.println("Task: " + count + ": Hundred = " + hundred);
+
         } catch ( InterruptedException ex ) {
             System.out.println( "We got interrupted" );
         }

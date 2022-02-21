@@ -18,16 +18,35 @@ public class Threads01 {
                 for ( String msg : messages ) {
                     System.out.println( msg );
                     try {
-                        Thread.sleep( 1000 );
+                        Thread.sleep( 1 );
                     } catch ( InterruptedException ex ) {
                         System.out.println( "Hov - jeg blev afbrudt" );
                     }
                 }
             }
         };
+
+        Thread t2 = new Thread() {
+            @Override
+            public void run() {
+                String[] messages = { "Hej2", "Hallo2", "Halløj2", "Hejsa2", "Davs2" };
+                for ( String msg : messages ) {
+                    System.out.println( msg );
+                    try {
+                        Thread.sleep( 1 );
+                    } catch ( InterruptedException ex ) {
+                        System.out.println( "Hov - jeg blev afbrudt2" );
+                    }
+                }
+            }
+        };
+
+
         System.out.println( "Starter tråd" );
         t.start();
 //        t.join();
+        t2.start();
+//        t2.join();
 //        t.join(3000);
 //        t.interrupt();
         System.out.println( "Main er færdig" );

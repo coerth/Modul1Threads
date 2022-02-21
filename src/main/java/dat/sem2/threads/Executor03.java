@@ -14,7 +14,8 @@ public class Executor03 {
         //ExecutorService workingJack = Executors.newSingleThreadExecutor();
         ExecutorService workingJack = Executors.newFixedThreadPool( 3);
         System.out.println( "Main starts" );
-        for ( int count = 0; count < 25; count++ ) {
+        for ( int count = 0; count < 25; count++ )
+        {
             Runnable task = new MyTask( count );
             workingJack.submit( task );
         }
